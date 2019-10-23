@@ -1,7 +1,12 @@
 import React from "react";
 import removeIcon from './images/removeIcon.png'
+import trackIcon from './images/tracking.png'
+import Modal from "./Modal";
+import useModal from './useModal';
+
 
 export function Package(props) {
+    const {isShowing, toggle} = useModal();
     return (
         <div className="packageInput">
             <div>
@@ -17,7 +22,10 @@ export function Package(props) {
                 <input type="text" placeholder="Enter Package Name"></input>
             </form>
             </div>
-            <button className="removeButton" onClick={() => props.deletePackage(props.index)}><img src={removeIcon}  width="10px" height="15px" alt="Remove Icon"></img><div id="buttonText">Remove Package</div></button>        </div>
+            <Modal isShowing={isShowing} hide={toggle}/>
+            <button onClick={toggle} className="track"> Track <img src={trackIcon} width="20px" height="20px"></img></button>     
+            <button className="removeButton" onClick={() => props.deletePackage(props.index)}><img src={removeIcon}  width="10px" height="15px" alt="Remove Icon"></img><div id="buttonText">Remove Package</div></button>  
+        </div>
         
     )
 }

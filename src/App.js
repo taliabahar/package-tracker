@@ -3,14 +3,8 @@ import './App.css';
 import {Package} from "./PackageInput";
 import {Track} from "./Track";
 
-import ReactDOM from "react-dom";
-import Modal from 'react-modal';
-
-// import { Route, Link, BrowserRouter as Router } from "react-router-dom";
-// import TrackingPage from "./TrackingPage";
-
-// import { useRoutes } from "hookrouter";
-// import routes from "./router";
+// import Modal from "./Modal";
+// import useModal from './useModal';
 
 
 function App() {
@@ -38,14 +32,6 @@ function App() {
 
   return (
     <div className = "app">
-      {/* <Router>
-        <ul>
-            <li>
-              <Link to="/tracking">Tracking</Link>
-            </li>
-          </ul>
-          <Route path="/tracking" component={TrackingPage} />
-      </Router> */}
       <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed|Lexend+Deca|Modak|News+Cycle|Nunito+Sans|Poppins|Quattrocento+Sans|Roboto+Condensed|Shrikhand&display=swap" rel="stylesheet"></link>
           <h1 id="header">Package Tracker</h1>
           <button className="addPackageButton" onClick={(e) => addPackage(e)}><div id="buttonTextAdd">Add Package</div></button>
@@ -54,7 +40,7 @@ function App() {
           <Package index={index} package={Package} deletePackage={deletePackage}/> 
         ))}
       </div>
-      <Track></Track>
+      {/* <Track></Track> */}
     </div>
 
   );
