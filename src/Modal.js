@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './Modal.css';
 
-
+// make look like react hooks 
 const Modal = ({ isShowing, hide, name }) => isShowing ? ReactDOM.createPortal(
   <React.Fragment>
     <div className="modal-overlay"/>
@@ -15,6 +15,8 @@ const Modal = ({ isShowing, hide, name }) => isShowing ? ReactDOM.createPortal(
         </div>
         <h1>
           {name}
+          {/* need to get most recent tracking info here: status, status details AND format it*/}
+          {/* INSERT MAP */}
         </h1>
       </div>
     </div>

@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import {Package} from "./PackageInput";
+import { apiHost } from './shippoAPI'
+
 
 // import Modal from "./Modal";
 // import useModal from './useModal';
 
 
 function App() {
+  useEffect(() => apiHost('https://api.goshippo.com/tracks/'))
+
   const [packages, setPackages] = useState([
     {
         carrier: "",
@@ -14,7 +18,6 @@ function App() {
         trackingName: ""
     }
   ])
-  console.log('packages state', packages)
   const addPackage = (pkg) => {
     const newPackage = [pkg, ...packages];
     
@@ -30,6 +33,7 @@ function App() {
     newPackages.splice(index, 1);
     setPackages(newPackages);
   }
+
 
   return (
     <div className = "app">
