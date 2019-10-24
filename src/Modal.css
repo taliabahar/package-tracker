@@ -2,6 +2,8 @@ h1{
   text-align: center;
 }
 
+/* display flex */
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -49,4 +51,8 @@ h1{
   opacity: .3;
   cursor: pointer;
   border: none;
+}
+
+.packageName {
+  border-bottom: solid 2px #000;
 }

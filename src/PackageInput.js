@@ -19,13 +19,11 @@ export function Package(props) {
     const [status, setStatus] = useState('');
     const [statusDetails, setStatusDetails] = useState('');
 
-    function grabData() {
-        const data = trackPackage();
-        setStatus(data.status);
-        setStatusDetails(data.status_details);
-
-        console.log("STATUS:" + status);
-        console.log("STATUS DETAIL:" + statusDetails);
+    async function grabData() {
+        const data = await trackPackage();
+        const trackingHistoryItem = data.data[0].tracking_history[0]
+        setStatus(trackingHistoryItem.status);
+        setStatusDetails(trackingHistoryItem.status_details);
     }
 
     return (
@@ -43,7 +41,10 @@ export function Package(props) {
                 <input onChange={(e) => setTrackingName(e.target.value) } type="text" placeholder="Enter Package Name"></input>
             </form>
             </div>
-            <Modal isShowing={isShowing} hide={toggle} name={trackingName} carrier={carrier} trackingNumber={trackingNumber}/>
+            <Modal isShowing={isShowing} hide={toggle} name={trackingName}
+              carrier={carrier} trackingNumber={trackingNumber}
+              status={status} statusDetails={statusDetails}
+            />
             {/* make tracking button disabled untill all 3 values are supplied */}
             {/* on click call api then set state - need to plan ahead - send info to modal passtracking data to Modal */}
             <button onClick={() => {toggle(); grabData();}} className="track"> Track <img src={trackIcon} width="20px" height="20px" alt="tracking icon"></img></button>     
