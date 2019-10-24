@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
 import {Package} from "./PackageInput";
-import {Track} from "./Track";
 
 // import Modal from "./Modal";
 // import useModal from './useModal';
@@ -10,19 +9,21 @@ import {Track} from "./Track";
 function App() {
   const [packages, setPackages] = useState([
     {
-      defaultPackage: {
         carrier: "",
         trackingNum: "",
         trackingName: ""
-      }
     }
   ])
-
+  console.log('packages state', packages)
   const addPackage = (pkg) => {
     const newPackage = [pkg, ...packages];
     
     setPackages(newPackage);
   }
+
+  // const trackPackage = () => {
+
+  // }
 
   const deletePackage = index => {
     const newPackages = [...packages];
@@ -37,10 +38,9 @@ function App() {
           <button className="addPackageButton" onClick={(e) => addPackage(e)}><div id="buttonTextAdd">Add Package</div></button>
       <div className = "todo-list">
         {packages.map((packages, index) => (
-          <Package index={index} package={Package} deletePackage={deletePackage}/> 
+          <Package index={index} deletePackage={deletePackage} /> 
         ))}
       </div>
-      {/* <Track></Track> */}
     </div>
 
   );

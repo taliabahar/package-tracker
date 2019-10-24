@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './Modal.css';
 
-const Modal = ({ isShowing, hide }) => isShowing ? ReactDOM.createPortal(
+
+const Modal = ({ isShowing, hide, name }) => isShowing ? ReactDOM.createPortal(
   <React.Fragment>
     <div className="modal-overlay"/>
     <div className="modal-wrapper" aria-modal aria-hidden tabIndex={-1} role="dialog">
@@ -12,7 +14,7 @@ const Modal = ({ isShowing, hide }) => isShowing ? ReactDOM.createPortal(
           </button>
         </div>
         <h1>
-          Chosen Package Name + Status Color
+          {name}
         </h1>
       </div>
     </div>
