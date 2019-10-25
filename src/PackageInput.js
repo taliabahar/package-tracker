@@ -12,19 +12,32 @@ export function Package(props) {
     const [trackingNumber, setTrackingNumber] = useState('')
     const [trackingName, setTrackingName] = useState('')
     
-    console.log('tracking no:', trackingNumber)
-    console.log('tracking name:', trackingName)
-    console.log('carrier:', carrier)
-
     const [status, setStatus] = useState('');
     const [statusDetails, setStatusDetails] = useState('');
+    const [statusIndicatorColor, setStatusIndicatorColor] = useState('');
+
+    const isEnabled = trackingName.length > 0 && trackingNumber.length > 0 && carrier !== "";
 
     async function grabData() {
         const data = await trackPackage();
-        const trackingHistoryItem = data.data[0].tracking_history[0]
+        const trackingHistoryItem = data.data[0].tracking_history[data.data[0].tracking_history.length-1]
         setStatus(trackingHistoryItem.status);
         setStatusDetails(trackingHistoryItem.status_details);
+        statusIndicator();
     }
+
+    function statusIndicator() {
+        if(status === "DELIVERED") {
+            setStatusIndicatorColor("positive");
+        }
+        if(status === "TRANSIT") {
+            setStatusIndicatorColor("active");
+        }
+        if(status === "FAILURE") {
+            setStatusIndicatorColor("negative");
+        }
+    }
+    console.log("symbol: " + statusIndicatorColor);
 
     return (
         <div className="packageInput">
@@ -43,12 +56,11 @@ export function Package(props) {
             </div>
             <Modal isShowing={isShowing} hide={toggle} name={trackingName}
               carrier={carrier} trackingNumber={trackingNumber}
-              status={status} statusDetails={statusDetails}
+              status={status} statusDetails={statusDetails} statusIndicatorColor={statusIndicatorColor}
             />
             {/* make tracking button disabled untill all 3 values are supplied */}
-            {/* on click call api then set state - need to plan ahead - send info to modal passtracking data to Modal */}
-            <button onClick={() => {toggle(); grabData();}} className="track"> Track <img src={trackIcon} width="20px" height="20px" alt="tracking icon"></img></button>     
-            <button className="removeButton" onClick={() => props.deletePackage(props.index)}><img src={removeIcon}  width="7px" height="10px" alt="Remove Icon"></img><div id="buttonText">Remove Package</div></button>  
+            <button disabled={!isEnabled} onClick={() => {toggle(); grabData();}} className="track"> Track <img src={trackIcon} width="20px" height="20px" alt="tracking icon"></img></button>     
+            <button className="removeButton" onClick={() => props.deletePackage(props.index)}><img src={removeIcon}  width="7px" height="9px" alt="Remove Icon"></img><div id="buttonText">Remove Package</div></button>  
         </div>
         
     )

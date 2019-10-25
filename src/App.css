@@ -1,7 +1,10 @@
-.app {
-  background: #B2E7F3;
-  padding: 30px;
+body{
   height: 100vh;
+  background: #B2E7F3;
+  height: 100vh;
+}
+.app {
+  padding: 30px;
 }
 
 #header {
@@ -72,7 +75,10 @@ input[type=text] {
 .addPackageButton {
   width: 150px;
   height: 70px;
+  position: relative;
+  top: 80px;
 }
+
 
 .input {
   margin-top: 20px;
@@ -95,5 +101,12 @@ input[type=text] {
   width: 60px;
   height: 40px;
   margin-left: -20px;
+  background-color: white;
+}
+
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
 }
 

@@ -1,20 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './Modal.css';
-import mapboxgl from 'mapbox-gl';
 import Mapbox from './MapboxGLMap';
+import 'status-indicator/styles.css';
 
 
-// const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
-
-// mapboxgl.accessToken = 'pk.eyJ1IjoidGFsaWFiYWhhciIsImEiOiJjazBpdDlvd3gwM2xwM2VzYm44amlzMW9yIn0.lmHtTTHzPH5uaejyDcn_1A';
-// const map = new mapboxgl.Map({
-// container: 'packageMap',
-// style: 'mapbox://styles/mapbox/streets-v11'
-// });
+// <status-indicator active pulse></status-indicator> 
+// <status-indicator positive pulse></status-indicator>
+// <status-indicator intermediary pulse></status-indicator>
+// <status-indicator negative pulse></status-indicator>
 
 // make look like react hooks 
-const Modal = ({ isShowing, hide, name, status, statusDetails }) => isShowing ? ReactDOM.createPortal(
+const Modal = ({ isShowing, hide, name, status, statusDetails, statusIndicatorColor }) => isShowing ? ReactDOM.createPortal(
   <React.Fragment>
     <div className="modal-overlay"/>
     <div className="modal-wrapper" aria-modal aria-hidden tabIndex={-1} role="dialog">
@@ -26,10 +23,10 @@ const Modal = ({ isShowing, hide, name, status, statusDetails }) => isShowing ? 
         </div>
         <h1>
           <div className="packageName">
-          {name}
+          {name} 
           </div>
           <div className="status">
-          Status: {status}
+          Status: {status} <status-indicator width="100px" height="100px" {...statusIndicatorColor} pulse></status-indicator>
           </div>
           <div className="statusDetails">
           {statusDetails}
