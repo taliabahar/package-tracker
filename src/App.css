@@ -65,18 +65,24 @@ input[type=text] {
   text-align: center;
 }
 
-#buttonTextAdd {
+#boxImage {
+  cursor: pointer;
+}
+
+/* #buttonTextAdd {
   font-size: 18px;
   color: black;
   font-weight: bold;
   text-align: center;
-}
+} */
 
 .addPackageButton {
-  width: 150px;
-  height: 70px;
+  /* width: 150px;
+  height: 70px; */
   position: relative;
-  top: 80px;
+  top: 110px;
+  background-color: #B2E7F3;
+  border: none;
 }
 
 
@@ -102,6 +108,7 @@ input[type=text] {
   height: 40px;
   margin-left: -20px;
   background-color: white;
+  cursor: pointer;
 }
 
 button[disabled]{

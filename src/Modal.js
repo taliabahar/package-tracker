@@ -11,7 +11,14 @@ import 'status-indicator/styles.css';
 // <status-indicator negative pulse></status-indicator>
 
 // make look like react hooks 
-const Modal = ({ isShowing, hide, name, status, statusDetails, statusIndicatorColor }) => isShowing ? ReactDOM.createPortal(
+const Modal = ({ isShowing, hide, name, status, statusDetails, statusIndicatorColor }) => {
+
+  console.log("statusIndicatorColor: " + statusIndicatorColor)
+
+  const variableAttribute = { [statusIndicatorColor]: statusIndicatorColor };
+
+
+  return isShowing ? ReactDOM.createPortal(
   <React.Fragment>
     <div className="modal-overlay"/>
     <div className="modal-wrapper" aria-modal aria-hidden tabIndex={-1} role="dialog">
@@ -26,7 +33,9 @@ const Modal = ({ isShowing, hide, name, status, statusDetails, statusIndicatorCo
           {name} 
           </div>
           <div className="status">
-          Status: {status} <status-indicator width="100px" height="100px" {...statusIndicatorColor} pulse></status-indicator>
+          {/* Status: {status} <status-indicator width="100px" height="100px" pulse></status-indicator> */}
+          Status: {status} <status-indicator width="100px" height="100px" {...variableAttribute} pulse></status-indicator>
+
           </div>
           <div className="statusDetails">
           {statusDetails}
@@ -38,6 +47,7 @@ const Modal = ({ isShowing, hide, name, status, statusDetails, statusIndicatorCo
       </div>
     </div>
   </React.Fragment>, document.body
-) : null;
+) : null
+};
 
 export default Modal;

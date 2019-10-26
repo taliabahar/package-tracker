@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import {Package} from "./PackageInput";
 import { apiHost } from './shippoAPI';
-import box from './images/box.png';
+import box from './images/box2.png';
 
 
 
@@ -37,7 +37,7 @@ function App() {
       <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed|Lexend+Deca|Modak|News+Cycle|Nunito+Sans|Poppins|Quattrocento+Sans|Roboto+Condensed|Shrikhand&display=swap" rel="stylesheet"></link>
           <h1 id="header">Package Tracker</h1>
       <div className="add">
-      <button className="addPackageButton" onClick={(e) => addPackage(e)}><div id="buttonTextAdd">Add Package</div></button>
+      <button className="addPackageButton" onClick={(e) => addPackage(e)}><img id="boxImage" src={box} alt="box" width="100px" height="100px"></img></button>
       </div>
       <div className = "todo-list">
         {packages.map((packages, index) => (

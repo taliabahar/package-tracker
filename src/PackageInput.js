@@ -29,13 +29,11 @@ export function Package(props) {
     function statusIndicator() {
         if(status === "DELIVERED") {
             setStatusIndicatorColor("positive");
-        }
-        if(status === "TRANSIT") {
+        } else if(status === "TRANSIT") {
             setStatusIndicatorColor("active");
-        }
-        if(status === "FAILURE") {
+        } else if(status === "FAILURE") {
             setStatusIndicatorColor("negative");
-        }
+        } 
     }
     console.log("symbol: " + statusIndicatorColor);
 
@@ -59,7 +57,7 @@ export function Package(props) {
               status={status} statusDetails={statusDetails} statusIndicatorColor={statusIndicatorColor}
             />
             {/* make tracking button disabled untill all 3 values are supplied */}
-            <button disabled={!isEnabled} onClick={() => {toggle(); grabData();}} className="track"> Track <img src={trackIcon} width="20px" height="20px" alt="tracking icon"></img></button>     
+            <button disabled={!isEnabled} onClick={() => {grabData(); toggle();}} className="track"> Track <img src={trackIcon} width="20px" height="20px" alt="tracking icon"></img></button>     
             <button className="removeButton" onClick={() => props.deletePackage(props.index)}><img src={removeIcon}  width="7px" height="9px" alt="Remove Icon"></img><div id="buttonText">Remove Package</div></button>  
         </div>
         
