@@ -18,8 +18,8 @@ body{
 
 .todo-list {
   margin: 0 auto;
-  background: #B2E7F3;
-  /* background: yellow; */
+  /* background: #B2E7F3; */
+  background: yellow;
   border-radius: 4px;
   padding: 5px;
   max-width: 850px;
@@ -56,6 +56,7 @@ input[type=text] {
   width: 45px;
   height: 45px;
   border-radius: 100%;
+  cursor: pointer;
 }
 
 #buttonText {
@@ -117,3 +118,155 @@ button[disabled]{
   color: #666666;
 }
 
+
+/* #bg{
+  width: 32px;
+  height: 32px;
+  opacity: 0;
+}
+
+.container {
+	width: 500px;
+	height: 500px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+.btn {
+	width: 100px;
+	height: 100px;
+    border: none;
+    color: inherit;
+    background: none;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 300;
+    outline: none;
+    position: absolute;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.btn img{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.btn:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.bg {
+    height: 32px;
+    width: 32px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.btn-boarder {
+    border: 2px solid #fff;
+    border-radius: 50%;
+}
+
+.animation {
+    -webkit-transform: translate(100px, -100px);
+    -moz-transform: translate(100px, -100px);
+    -o-transform: translate(100px, -100px);
+    -ms-transform: translate(100px, -100px);
+    transform: translate(100px, -100px);
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+
+.animation2 {
+    -webkit-animation: fadeIn 0.4s ease-out;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-delay: 0.4s;
+    -moz-animation: fadeIn 0.4s ease-out;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-fill-mode: forwards;
+    -moz-animation-delay: 0.4s;
+    animation: fadeIn 0.4s ease-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 0.4s;
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+.around {
+    width: 101px;
+    height: 101px;
+    border: none;
+    color: inherit;
+    background: none;
+    cursor: pointer;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 300;
+    outline: none;
+    position: absolute;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.around:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+}
+
+.around-boarder {
+    border: 120px solid #B2E7F3;
+    border-radius: 50%;
+} */

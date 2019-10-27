@@ -1,9 +1,8 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import removeIcon from './images/removeIcon.png'
 import trackIcon from './images/tracking.png'
 import Modal from "./Modal";
 import useModal from './useModal';
-
 import {trackPackage} from './shippoAPI'
 
 export function Package(props) {
@@ -18,13 +17,30 @@ export function Package(props) {
 
     const isEnabled = trackingName.length > 0 && trackingNumber.length > 0 && carrier !== "";
 
+    // where does this take in the tracking number and carrier 
     async function grabData() {
         const data = await trackPackage();
-        const trackingHistoryItem = data.data[0].tracking_history[data.data[0].tracking_history.length-1]
-        setStatus(trackingHistoryItem.status);
-        setStatusDetails(trackingHistoryItem.status_details);
-        statusIndicator();
+        const currentTrackingHistoryItem = data.data[0].tracking_history[data.data[0].tracking_history.length-1]
+        setStatus(currentTrackingHistoryItem.status);
+        setStatusDetails(currentTrackingHistoryItem.status_details);
     }
+
+    useEffect(() => {
+        statusIndicator();
+    });
+
+    // async function grabPackageData() {
+    //     const data = await trackPackage();
+    //     const currentTrackingLocation = data.data[0].tracking_history[data.data[0].tracking_history.length-1]
+    //     setPackageCity(currentTrackingLocation.location.city);
+    //     setPackageCountry(currentTrackingLocation.location.country);
+    //   }
+      
+    //   async function grabLocationData() {
+    //     const data = await getPackageCoordinates();
+    //     setCenter(data.features[0].geometry.coordinates);
+    //     console.log('HELLO', center)    
+    //   }
 
     function statusIndicator() {
         if(status === "DELIVERED") {
@@ -35,7 +51,13 @@ export function Package(props) {
             setStatusIndicatorColor("negative");
         } 
     }
-    console.log("symbol: " + statusIndicatorColor);
+
+    // function ani(){
+    //     document.getElementById('plane').className ='animation';
+    // }
+    // function anitwo(){
+    //     document.getElementById('bg').className ='animation2';
+    // }
 
     return (
         <div className="packageInput">
@@ -56,10 +78,14 @@ export function Package(props) {
               carrier={carrier} trackingNumber={trackingNumber}
               status={status} statusDetails={statusDetails} statusIndicatorColor={statusIndicatorColor}
             />
-            {/* make tracking button disabled untill all 3 values are supplied */}
             <button disabled={!isEnabled} onClick={() => {grabData(); toggle();}} className="track"> Track <img src={trackIcon} width="20px" height="20px" alt="tracking icon"></img></button>     
             <button className="removeButton" onClick={() => props.deletePackage(props.index)}><img src={removeIcon}  width="7px" height="9px" alt="Remove Icon"></img><div id="buttonText">Remove Package</div></button>  
-        </div>
-        
+            
+            {/* <div class="container">
+			<button class="btn btn-inside btn-boarder"><img src={trackIcon} width="64px" height="64px" id="plane"></img></button>
+			<div class="bg"><img src="https://i.cloudup.com/2ZAX3hVsBE-3000x3000.png" id="bg"></img></div>
+			<div class="around around-boarder" onClick={() => {ani(); anitwo();}}></div>
+		    </div> */}
+        </div>   
     )
 }

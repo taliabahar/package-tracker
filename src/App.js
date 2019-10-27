@@ -4,33 +4,34 @@ import {Package} from "./PackageInput";
 import { apiHost } from './shippoAPI';
 import box from './images/box2.png';
 
-
-
-// import Modal from "./Modal";
-// import useModal from './useModal';
-
-
-
 function App() {
   useEffect(() => apiHost('https://api.goshippo.com/tracks/'))
 
   const [packages, setPackages] = useState([
     {
-        carrier: "",
-        trackingNum: "",
-        trackingName: ""
+      carrier: "",
+      trackingNum: "",
+      trackingName: ""
     }
   ])
   const addPackage = (pkg) => {
     const newPackage = [pkg, ...packages];
-    
     setPackages(newPackage);
   }
 
+  // filter by tracking number 
+
+  // const deletePackage= (e) => {
+  //   const name = e.target.getAttribute("trackingNumber")
+  //    setPackages(packages.filter(item => item.name !== name));
+  //  };
+ 
+ 
   const deletePackage = index => {
     const newPackages = [...packages];
     newPackages.splice(index, 1);
     setPackages(newPackages);
+    // setPackages(newPackages.filter(packageBox => packageBox.index !== index))
   }
 
   return (
@@ -42,11 +43,11 @@ function App() {
       </div>
       <div className = "todo-list">
         {packages.map((packages, index) => (
+          console.log("INDEX" + index),
           <Package index={index} deletePackage={deletePackage} /> 
         ))}
       </div>
     </div>
-
   );
 }
 
