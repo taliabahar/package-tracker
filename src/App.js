@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import {Package} from "./PackageInput";
+import {Package} from "./Package";
 import { apiHost } from './shippoAPI';
-import box from './images/box2.png';
+import box from './images/boxGreen.png';
 
 function App() {
   useEffect(() => apiHost('https://api.goshippo.com/tracks/'))
@@ -12,27 +12,44 @@ function App() {
       carrier: "",
       trackingNum: "",
       trackingName: ""
-    }
+    },
   ])
+
   const addPackage = (pkg) => {
-    const newPackage = [pkg, ...packages];
+    const newPackage = [...packages, {pkg}];
     setPackages(newPackage);
   }
 
-  // filter by tracking number 
-
-  // const deletePackage= (e) => {
-  //   const name = e.target.getAttribute("trackingNumber")
-  //    setPackages(packages.filter(item => item.name !== name));
-  //  };
- 
- 
   const deletePackage = index => {
-    const newPackages = [...packages];
-    newPackages.splice(index, 1);
+    console.log('deleted index', index)
+    const newPackages = [...packages]
+    newPackages.splice(index, 1)
     setPackages(newPackages);
-    // setPackages(newPackages.filter(packageBox => packageBox.index !== index))
+    console.log('deleted packages', packages)
+
   }
+
+  const setCarrier = (index, value) => {
+    const updatedPackages = [...packages]
+    updatedPackages[index].carrier = value
+    setPackages(updatedPackages)
+    console.log('updated packages', packages)
+  }
+
+  const setTrackingNumber = (index, value) => {
+    const updatedPackages = [...packages]
+    updatedPackages[index].trackingNum = value
+    setPackages(updatedPackages)
+    console.log('updated packages', packages)
+  }
+
+  const setTrackingName= (index, value) => {
+    const updatedPackages = [...packages]
+    updatedPackages[index].trackingName = value
+    setPackages(updatedPackages)
+    console.log('updated packages', packages)
+  }
+  
 
   return (
     <div className = "app">
@@ -42,9 +59,8 @@ function App() {
       <button className="addPackageButton" onClick={(e) => addPackage(e)}><img id="boxImage" src={box} alt="box" width="100px" height="100px"></img></button>
       </div>
       <div className = "todo-list">
-        {packages.map((packages, index) => (
-          console.log("INDEX" + index),
-          <Package index={index} deletePackage={deletePackage} /> 
+        {packages.map((pkg, index) => (
+          <Package index={index} pkg={pkg} carrier={pkg.carrier} trackingNum={pkg.trackingNum} trackingName={pkg.trackingName} setTrackingNumber={setTrackingNumber} setTrackingName={setTrackingName} setCarrier={setCarrier} deletePackage={deletePackage} /> 
         ))}
       </div>
     </div>

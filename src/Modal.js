@@ -1,35 +1,24 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from 'react-dom';
 import './Modal.css';
 import Mapbox from './MapboxGLMap';
 import 'status-indicator/styles.css';
-import {trackPackage} from './shippoAPI'
 import {getPackageCoordinates} from './MapboxForwardGeocodingAPI'
-import { async } from "q";
 
 // make look like react hooks 
 const Modal = ({ isShowing, hide, name, status, statusDetails, statusIndicatorColor }) => {
   const variableAttribute = { [statusIndicatorColor]: statusIndicatorColor };
-  const [map, setMap] = useState(null);
-  const mapContainer = useRef(null);
-  const [packageCity, setPackageCity] = useState('');
-  const [packageCountry, setPackageCountry] = useState('');
+  // const [packageCity, setPackageCity] = useState('');
+  // const [packageCountry, setPackageCountry] = useState('');
   const [center, setCenter] = useState([]);
-  // console.log('props center', center)
-  async function grabPackageData() {
-    const data = await trackPackage();
-    const currentTrackingLocation = data.data[0].tracking_history[data.data[0].tracking_history.length-1]
-    setPackageCity(currentTrackingLocation.location.city);
-    setPackageCountry(currentTrackingLocation.location.country);
-  }
-  
-  // async function grabLocationData() {
-  //   const data = await getPackageCoordinates();
-  //   setCenter(data.features[0].geometry.coordinates);
-  //   console.log('HELLO', center)
 
+  // async function grabPackageData() {
+  //   const data = await trackPackage();
+  //   const currentTrackingLocation = data.data[0].tracking_history[data.data[0].tracking_history.length-1]
+  //   setPackageCity(currentTrackingLocation.location.city);
+  //   setPackageCountry(currentTrackingLocation.location.country);
   // }
-
+  
   useEffect(() => {
     const grabLocationData = async () => {
       const data = await getPackageCoordinates();
