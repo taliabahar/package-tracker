@@ -20,7 +20,7 @@ export function Package(props) {
     const [statusIndicatorColor, setStatusIndicatorColor] = useState('');
 
     // const isEnabled = trackingName.length > 0 && trackingNum.length > 0 && carrier.length > 0;
-    const isEnabled = trackingName !== "" && trackingNum !== "" && carrier !== "";
+    const isEnabled = props.pkg.trackingName !== "" && props.pkg.trackingNum !== "" && props.pkg.carrier !== "";
 
     async function grabData() {
         const data = await trackPackage();
@@ -62,7 +62,7 @@ export function Package(props) {
 
     return (
         <div className="packageInput">
-            <div>
+        <div>
             <form>
                 <select className="carrierOptions" value={props.pkg.carrier} onChange={(e) => props.setCarrier(props.index, e.target.value) }>
                     <option value="" disabled selected>Select a Carrier</option>
@@ -73,10 +73,10 @@ export function Package(props) {
                 <input value={props.pkg.trackingNum} onChange={(e) => props.setTrackingNumber(props.index, e.target.value) } type="text" placeholder="Enter Package Tracking Number"></input>
                 <input value={props.pkg.trackingName} onChange={(e) => props.setTrackingName(props.index, e.target.value) } type="text" placeholder="Enter Package Name"></input>
             </form>
-            </div>
-            <Modal isShowing={isShowing} hide={toggle} name={trackingName}
-              carrier={carrier} trackingNum={trackingNum}
-              status={status} statusDetails={statusDetails} statusIndicatorColor={statusIndicatorColor}
+        </div>
+            <Modal isShowing={isShowing} hide={toggle} name={props.pkg.trackingName}
+                carrier={carrier} trackingNum={trackingNum}
+                status={status} statusDetails={statusDetails} statusIndicatorColor={statusIndicatorColor}
             />
             <button disabled={!isEnabled} onClick={() => {grabData(); toggle();}} className="track"> Track <img src={trackIcon} width="20px" height="20px" alt="tracking icon"></img></button>     
             <button className="removeButton" onClick={() => props.deletePackage(props.index)}><img id="removeImg" src={r3} alt="Remove Icon"></img></button>  

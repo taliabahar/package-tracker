@@ -3,6 +3,7 @@ body{
   background: #B2E7F3;
   height: 100vh;
 }
+
 .app {
   padding: 30px;
 }
@@ -78,23 +79,13 @@ input[type=text] {
   cursor: pointer;
 }
 
-/* #buttonTextAdd {
-  font-size: 18px;
-  color: black;
-  font-weight: bold;
-  text-align: center;
-} */
-
 .addPackageButton {
-  /* width: 150px;
-  height: 70px; */
   position: relative;
   top: 110px;
   background-color: #B2E7F3;
   border: none;
   cursor: pointer;
 }
-
 
 .input {
   margin-top: 20px;
@@ -114,8 +105,7 @@ input[type=text] {
   background-color: rgba(0,255,0,.8);
 }
 
-
-button[disabled]{
+button[disabled], button[disabled]:hover{
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;

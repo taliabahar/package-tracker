@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from 'react-dom';
 import './Modal.css';
+// PROBLEM
 import Mapbox from './MapboxGLMap';
+// PROBLEM
 import 'status-indicator/styles.css';
 import {getPackageCoordinates} from './MapboxForwardGeocodingAPI'
 
@@ -29,7 +31,7 @@ const Modal = ({ isShowing, hide, name, status, statusDetails, statusIndicatorCo
 
   return isShowing ? ReactDOM.createPortal(
   <React.Fragment>
-    <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Josefin+Sans|Muli|Roboto+Condensed|Source+Sans+Pro|Staatliches|Ubuntu+Condensed&display=swap" rel="stylesheet"></link>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans&display=swap" rel="stylesheet"></link>
     <div className="modal-overlay"/>
     <div className="modal-wrapper" aria-modal aria-hidden tabIndex={-1} role="dialog">
       <div className="modal">
@@ -43,7 +45,6 @@ const Modal = ({ isShowing, hide, name, status, statusDetails, statusIndicatorCo
           {name} 
           </div>
           <div className="status">
-          {/* Status: {status} <status-indicator width="100px" height="100px" pulse></status-indicator> */}
           Status: {status} <status-indicator width="100px" height="100px" {...variableAttribute} pulse></status-indicator>
           </div>
           <div className="statusDetails">
