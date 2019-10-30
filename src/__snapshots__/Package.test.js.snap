@@ -8,6 +8,7 @@ exports[`should start with a disabled track button 1`] = `
     <form>
       <select
         className="carrierOptions"
+        id="carrierInput"
         onChange={[Function]}
         value=""
       >
@@ -35,12 +36,14 @@ exports[`should start with a disabled track button 1`] = `
         </option>
       </select>
       <input
+        id="trackingNumberInput"
         onChange={[Function]}
         placeholder="Enter Package Tracking Number"
         type="text"
         value=""
       />
       <input
+        id="trackingNameInput"
         onChange={[Function]}
         placeholder="Enter Package Name"
         type="text"
@@ -53,7 +56,9 @@ exports[`should start with a disabled track button 1`] = `
     disabled={true}
     onClick={[Function]}
   >
-     Track 
+     
+    Track
+     
     <img
       alt="tracking icon"
       height="20px"
@@ -82,6 +87,7 @@ exports[`should start with an empty search field 1`] = `
     <form>
       <select
         className="carrierOptions"
+        id="carrierInput"
         onChange={[Function]}
         value=""
       >
@@ -109,12 +115,14 @@ exports[`should start with an empty search field 1`] = `
         </option>
       </select>
       <input
+        id="trackingNumberInput"
         onChange={[Function]}
         placeholder="Enter Package Tracking Number"
         type="text"
         value=""
       />
       <input
+        id="trackingNameInput"
         onChange={[Function]}
         placeholder="Enter Package Name"
         type="text"
@@ -127,7 +135,9 @@ exports[`should start with an empty search field 1`] = `
     disabled={true}
     onClick={[Function]}
   >
-     Track 
+     
+    Track
+     
     <img
       alt="tracking icon"
       height="20px"

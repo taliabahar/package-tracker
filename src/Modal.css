@@ -1,4 +1,4 @@
-h1{
+h1 {
   text-align: center;
 }
 
@@ -10,7 +10,7 @@ h1{
   width: 100vw;
   height: 100vh;
   background-color: #000;
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .modal-wrapper {
@@ -48,7 +48,7 @@ h1{
   font-weight: 700;
   line-height: 1;
   color: #000;
-  opacity: .3;
+  opacity: 0.3;
   cursor: pointer;
   border: none;
 }
@@ -56,17 +56,17 @@ h1{
 .packageName {
   /* border-bottom: solid 2px #000; */
   margin-bottom: 10px;
-  background: #B2E7F3;
-  font-family: 'Fira Sans', sans-serif;
+  background: #b2e7f3;
+  font-family: "Fira Sans", sans-serif;
 }
 
-.status{
+.status {
   margin-bottom: 10px;
-  font-family: 'Fira Sans', sans-serif;
+  font-family: "Fira Sans", sans-serif;
 }
 
-.statusDetails{
+.statusDetails {
   margin-bottom: 10px;
   padding: 5px;
-  font-family: 'Fira Sans', sans-serif;
+  font-family: "Fira Sans", sans-serif;
 }

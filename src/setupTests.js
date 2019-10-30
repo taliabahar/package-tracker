@@ -1,1 +1,1 @@
-global.window.URL.createObjectURL = () => {}
+global.window.URL.createObjectURL = () => {};

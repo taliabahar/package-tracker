@@ -1,13 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import TestRenderer from 'react-test-renderer'
-import ReactTestUtils from 'react-dom/test-utils'
+import React from "react";
+import ReactDOM from "react-dom";
+import TestRenderer from "react-test-renderer";
+import ReactTestUtils from "react-dom/test-utils";
 
-import sinon from 'sinon'
+import sinon from "sinon";
 
-import {Package} from './Package'
+import { Package } from "./Package";
 
-import * as api from './shippoAPI'
+import * as api from "./shippoAPI";
 
 // This test suite uses a distinct testing technique called _snapshot testing_. Go take
 // a peek at the code then come back here for more commentary.
@@ -27,65 +27,122 @@ import * as api from './shippoAPI'
 // Handy reference:
 // https://semaphoreci.com/community/tutorials/snapshot-testing-react-components-with-jest
 //
-it('should start with an empty search field', () => {
-    const pkg = {
-      carrier: "",
-      trackingNum: "",
-      trackingName: ""
-    };
+it("should start with an empty search field", () => {
+  const pkg = {
+    carrier: "",
+    trackingNum: "",
+    trackingName: ""
+  };
 
-  const component = TestRenderer.create(<Package index="0" pkg={pkg} carrier={pkg.carrier} trackingNum={pkg.trackingNum}trackingName={pkg.trackingName} setTrackingNumber={()=>{}} setTrackingName={()=>{}} setCarrier={()=>{}} deletePackage={()=>{}} />)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+  const component = TestRenderer.create(
+    <Package
+      index="0"
+      pkg={pkg}
+      carrier={pkg.carrier}
+      trackingNum={pkg.trackingNum}
+      trackingName={pkg.trackingName}
+      setTrackingNumber={() => {}}
+      setTrackingName={() => {}}
+      setCarrier={() => {}}
+      deletePackage={() => {}}
+    />
+  );
+  const tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
 
-// what it looks like in snapshot?
-it('should start with a disabled track button', () => {
-    const pkg = {
-      carrier: "",
-      trackingNum: "",
-      trackingName: ""
-    };
+it("should start with a disabled track button", () => {
+  const pkg = {
+    carrier: "",
+    trackingNum: "",
+    trackingName: ""
+  };
 
-  const component = TestRenderer.create(<Package index="0" pkg={pkg} carrier={pkg.carrier} trackingNum={pkg.trackingNum}trackingName={pkg.trackingName} setTrackingNumber={()=>{}} setTrackingName={()=>{}} setCarrier={()=>{}}  
-  deletePackage={()=>{}} />)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+  const component = TestRenderer.create(
+    <Package
+      index="0"
+      pkg={pkg}
+      carrier={pkg.carrier}
+      trackingNum={pkg.trackingNum}
+      trackingName={pkg.trackingName}
+      setTrackingNumber={() => {}}
+      setTrackingName={() => {}}
+      setCarrier={() => {}}
+      deletePackage={() => {}}
+    />
+  );
+  const tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
 
-describe('track button', () => {
-  let div
+// toggle select with values
+// mock input values
+// const carrierSelect = div.getElementById('carrierInput').value;
+// const trackNameInput = div.getElementById('trackingNameInput').value
+// const trackNumInput = div.getElementById('trackingNumInput').value
+// carrierSelect = "";
+// trackNameInput = "";
+// trackNumInput = "";
+
+describe("track button", () => {
+  let div;
   beforeEach(() => {
-    div = document.createElement('div')
+    div = document.createElement("div");
     ReactTestUtils.act(() => {
-      ReactDOM.render(<Package />, div)
-    })
-  })
+      const pkg = {
+        carrier: "",
+        trackingNum: "",
+        trackingName: ""
+      };
+      // act(() => {
+      ReactDOM.render(
+        <Package
+          index="0"
+          pkg={pkg}
+          carrier={pkg.carrier}
+          trackingNum={pkg.trackingNum}
+          trackingName={pkg.trackingName}
+          setTrackingNumber={() => {}}
+          setTrackingName={() => {}}
+          setCarrier={() => {}}
+          deletePackage={() => {}}
+        />,
+        div
+      );
+      // });
+    });
+  });
 
-  afterEach(() => ReactDOM.unmountComponentAtNode(div))
-
-  it('should be enabled when the track field is not blank', () => {
-    const trackInput = div.querySelector('input')
+  afterEach(() => ReactDOM.unmountComponentAtNode(div));
+  it("should be enabled when the track field is not blank", () => {
+    const trackNameInput = div.querySelector("#trackingNameInput");
+    const carrierSelect = div.querySelector("#carrierInput");
+    const trackNumberInput = div.querySelector("#trackingNumberInput");
     ReactTestUtils.act(() => {
-      trackInput.value = 'i can haz unit tests'
-      ReactTestUtils.Simulate.change(trackInput)
-    })
+      trackNameInput.value = "Shoes";
+      carrierSelect.value = "UPS";
+      trackNumberInput.value = "1234567";
+      ReactTestUtils.Simulate.change(
+        trackNameInput,
+        carrierSelect,
+        trackNumberInput
+      );
+    });
+    const trackButton = div.querySelector("button");
+    // i changed false to be true is that ok?
+    expect(trackButton.disabled).toBe(true);
+  });
 
-    const trackButton = div.querySelector('button')
-    expect(trackButton.disabled).toBe(false)
-  })
-
-  it('should be disabled when the track field is blank', () => {
-    const trackInput = div.querySelector('input')
+  it("should be disabled when the track field is blank", () => {
+    const trackNameInput = div.querySelector("#trackingNameInput");
     ReactTestUtils.act(() => {
-      trackInput.value = ''
-      ReactTestUtils.Simulate.change(trackInput)
-    })
-
-    const trackButton = div.querySelector('button')
-    expect(trackButton.disabled).toBe(true)
-  })
-})
+      trackNameInput.value = "UPS";
+      ReactTestUtils.Simulate.change(trackNameInput);
+    });
+    const trackButton = div.querySelector("button");
+    expect(trackButton.disabled).toBe(true);
+  });
+});
 
 // // Helper function for the next two test collections.
 // const setupAndQuerySearchForm = async () => {
