@@ -1,0 +1,249 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the app should initialize with one empty package form 1`] = `
+<div
+  className="app"
+>
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Shrikhand&display=swap"
+    rel="stylesheet"
+  />
+  <h1
+    id="header"
+  >
+    Package Tracker
+  </h1>
+  <div
+    className="add"
+  >
+    <button
+      className="addPackageButton"
+      onClick={[Function]}
+    >
+      <img
+        alt="box"
+        height="100px"
+        id="boxImage"
+        src="boxGreen.png"
+        width="100px"
+      />
+    </button>
+  </div>
+  <div
+    className="todo-list"
+  >
+    <div
+      className="packageInput"
+    >
+      <div>
+        <form>
+          <select
+            className="carrierOptions"
+            id="carrierInput"
+            onChange={[Function]}
+            value=""
+          >
+            <option
+              disabled={true}
+              selected={true}
+              value=""
+            >
+              Select a Carrier
+            </option>
+            <option
+              value="usps"
+            >
+              USPS
+            </option>
+            <option
+              value="usp"
+            >
+              UPS
+            </option>
+            <option
+              value="fedex"
+            >
+              FedEx
+            </option>
+          </select>
+          <input
+            id="trackingNumberInput"
+            onChange={[Function]}
+            placeholder="Enter Package Tracking Number"
+            type="text"
+            value=""
+          />
+          <input
+            id="trackingNameInput"
+            onChange={[Function]}
+            placeholder="Enter Package Name"
+            type="text"
+            value=""
+          />
+        </form>
+      </div>
+      <button
+        className="track"
+        disabled={true}
+        onClick={[Function]}
+      >
+         
+        Track
+         
+        <img
+          alt="tracking icon"
+          height="20px"
+          src="tracking.png"
+          width="20px"
+        />
+      </button>
+      <button
+        className="removeButton"
+        onClick={[Function]}
+      >
+        <img
+          alt="Remove Icon"
+          id="removeImg"
+          src="x-button.png"
+        />
+      </button>
+    </div>
+    <div
+      className="push"
+    />
+  </div>
+  <footer
+    className="footer"
+  >
+    <img
+      alt="Truck and hills"
+      id="footerGraphic"
+      src="footer.png"
+    />
+  </footer>
+</div>
+`;
+
+exports[`the app should initialize with the add package button 1`] = `
+<div
+  className="app"
+>
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Shrikhand&display=swap"
+    rel="stylesheet"
+  />
+  <h1
+    id="header"
+  >
+    Package Tracker
+  </h1>
+  <div
+    className="add"
+  >
+    <button
+      className="addPackageButton"
+      onClick={[Function]}
+    >
+      <img
+        alt="box"
+        height="100px"
+        id="boxImage"
+        src="boxGreen.png"
+        width="100px"
+      />
+    </button>
+  </div>
+  <div
+    className="todo-list"
+  >
+    <div
+      className="packageInput"
+    >
+      <div>
+        <form>
+          <select
+            className="carrierOptions"
+            id="carrierInput"
+            onChange={[Function]}
+            value=""
+          >
+            <option
+              disabled={true}
+              selected={true}
+              value=""
+            >
+              Select a Carrier
+            </option>
+            <option
+              value="usps"
+            >
+              USPS
+            </option>
+            <option
+              value="usp"
+            >
+              UPS
+            </option>
+            <option
+              value="fedex"
+            >
+              FedEx
+            </option>
+          </select>
+          <input
+            id="trackingNumberInput"
+            onChange={[Function]}
+            placeholder="Enter Package Tracking Number"
+            type="text"
+            value=""
+          />
+          <input
+            id="trackingNameInput"
+            onChange={[Function]}
+            placeholder="Enter Package Name"
+            type="text"
+            value=""
+          />
+        </form>
+      </div>
+      <button
+        className="track"
+        disabled={true}
+        onClick={[Function]}
+      >
+         
+        Track
+         
+        <img
+          alt="tracking icon"
+          height="20px"
+          src="tracking.png"
+          width="20px"
+        />
+      </button>
+      <button
+        className="removeButton"
+        onClick={[Function]}
+      >
+        <img
+          alt="Remove Icon"
+          id="removeImg"
+          src="x-button.png"
+        />
+      </button>
+    </div>
+    <div
+      className="push"
+    />
+  </div>
+  <footer
+    className="footer"
+  >
+    <img
+      alt="Truck and hills"
+      id="footerGraphic"
+      src="footer.png"
+    />
+  </footer>
+</div>
+`;
