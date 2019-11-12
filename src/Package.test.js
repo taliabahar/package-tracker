@@ -75,15 +75,6 @@ it("should start with a disabled track button", () => {
   expect(tree).toMatchSnapshot();
 });
 
-// toggle select with values
-// mock input values
-// const carrierSelect = div.getElementById('carrierInput').value;
-// const trackNameInput = div.getElementById('trackingNameInput').value
-// const trackNumInput = div.getElementById('trackingNumInput').value
-// carrierSelect = "";
-// trackNameInput = "";
-// trackNumInput = "";
-
 describe("track button", () => {
   let div;
   beforeEach(() => {
@@ -94,7 +85,6 @@ describe("track button", () => {
         trackingNum: "",
         trackingName: ""
       };
-      // act(() => {
       ReactDOM.render(
         <Package
           index="0"
@@ -109,7 +99,6 @@ describe("track button", () => {
         />,
         div
       );
-      // });
     });
   });
 

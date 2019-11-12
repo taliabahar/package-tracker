@@ -61,12 +61,13 @@ h1 {
 }
 
 .status {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-family: "Fira Sans", sans-serif;
 }
 
 .statusDetails {
   margin-bottom: 10px;
   padding: 5px;
+  font-size: 25px;
   font-family: "Fira Sans", sans-serif;
 }

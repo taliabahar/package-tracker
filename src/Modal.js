@@ -5,28 +5,22 @@ import Mapbox from "./MapboxGLMap";
 import "status-indicator/styles.css";
 import { getPackageCoordinates } from "./MapboxForwardGeocodingAPI";
 
-// make look like react hooks
 const Modal = ({
   isShowing,
   hide,
   name,
   status,
   statusDetails,
-  statusIndicatorColor
+  statusIndicatorColor,
+  packageCity,
+  packageCountry
+  // center
 }) => {
   const variableAttribute = { [statusIndicatorColor]: statusIndicatorColor };
-  // const [packageCity, setPackageCity] = useState('');
-  // const [packageCountry, setPackageCountry] = useState('');
   const [center, setCenter] = useState([]);
 
-  // async function grabPackageData() {
-  //   const data = await trackPackage();
-  //   const currentTrackingLocation = data.data[0].tracking_history[data.data[0].tracking_history.length-1]
-  //   setPackageCity(currentTrackingLocation.location.city);
-  //   setPackageCountry(currentTrackingLocation.location.country);
-  // }
-
   useEffect(() => {
+    // const grabLocationData = async (packageCity, packageCountry) => {
     const grabLocationData = async () => {
       const data = await getPackageCoordinates();
       setCenter(data.features[0].geometry.coordinates);
@@ -64,7 +58,7 @@ const Modal = ({
               <h1>
                 <div className="packageName">{name}</div>
                 <div className="status">
-                  Status: {status}{" "}
+                  Status: {status ? status : "loading..."}{" "}
                   <status-indicator
                     width="100px"
                     height="100px"

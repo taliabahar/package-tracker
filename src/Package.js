@@ -5,6 +5,8 @@ import r3 from "./images/x-button.png";
 import Modal from "./Modal";
 import useModal from "./useModal";
 import { trackPackage } from "./shippoAPI";
+import { getTrackingStatus } from "./real-ShippoAPI";
+import { getPackageCoordinates } from "./real-MapboxAPI";
 
 export function Package(props) {
   const { carrier, trackingNum } = { props };
@@ -14,45 +16,33 @@ export function Package(props) {
   const [statusDetails, setStatusDetails] = useState("");
   const [statusIndicatorColor, setStatusIndicatorColor] = useState("");
 
-  //   const isEnabled =
-  //     props.pkg.trackingName.length > 0 &&
-  //     props.pkg.trackingNum.length > 0 &&
-  //     props.pkg.carrier.length > 0;
-  //   const isEnabled =
-  //     props.pkg.trackingName !== undefined &&
-  //     props.pkg.trackingNum !== undefined &&
-  //     props.pkg.carrier !== undefined;
+  const [packageCity, setPackageCity] = useState("");
+  const [packageCountry, setPackageCountry] = useState("");
+
+  // const [center, setCenter] = useState([]);
 
   const isEnabled =
-    props.pkg.trackingName !== "" &&
-    props.pkg.trackingName !== undefined &&
-    (props.pkg.trackingNum !== "" && props.pkg.trackingName !== undefined) &&
-    (props.pkg.carrier !== "" && props.pkg.trackingName !== undefined);
+    props.pkg.trackingName && props.pkg.trackingNum && props.pkg.carrier;
 
   async function grabData() {
-    const data = await trackPackage();
+    // const info = await trackPackage(); //post
+    // const data = await getTrackingStatus(carrier, trackingNum); //Dondi's get
+    const data = await trackPackage(carrier, trackingNum);
     const currentTrackingHistoryItem =
       data.data[0].tracking_history[data.data[0].tracking_history.length - 1];
     setStatus(currentTrackingHistoryItem.status);
     setStatusDetails(currentTrackingHistoryItem.status_details);
+
+    setPackageCity(currentTrackingHistoryItem.location.city);
+    setPackageCountry(currentTrackingHistoryItem.location.country);
+
+    // const locationData = await getPackageCoordinates(packageCity, packageCountry);
+    // setCenter(data.features[0].geometry.coordinates);
   }
 
   useEffect(() => {
     statusIndicator();
   });
-
-  // async function grabPackageData() {
-  //     const data = await trackPackage();
-  //     const currentTrackingLocation = data.data[0].tracking_history[data.data[0].tracking_history.length-1]
-  //     setPackageCity(currentTrackingLocation.location.city);
-  //     setPackageCountry(currentTrackingLocation.location.country);
-  //   }
-
-  //   async function grabLocationData() {
-  //     const data = await getPackageCoordinates();
-  //     setCenter(data.features[0].geometry.coordinates);
-  //     console.log('HELLO', center)
-  //   }
 
   function statusIndicator() {
     if (status === "DELIVERED") {
@@ -64,13 +54,8 @@ export function Package(props) {
     }
   }
 
-  // onChange={(e) => setTrackingNumber(e.target.value) }
-  // onChange={(e) => setTrackingName(e.target.value) }
-  // onChange={(e) => setCarrier(e.target.value) }
-
   return (
     <div className="packageInput">
-      {console.log("isEnabled" + isEnabled)}
       <div>
         <form>
           <select
@@ -111,8 +96,10 @@ export function Package(props) {
         status={status}
         statusDetails={statusDetails}
         statusIndicatorColor={statusIndicatorColor}
+        packageCity={packageCity}
+        packageCountry={packageCountry}
+        // center={center}
       />
-      {console.log("IS ENABLED", isEnabled)}
 
       <button
         disabled={!isEnabled}

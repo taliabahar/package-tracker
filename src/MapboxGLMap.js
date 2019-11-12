@@ -27,8 +27,6 @@ const styles = {
 const MapboxGLMap = ({ center }) => {
   const [map, setMap] = useState(null);
   const mapContainer = useRef(null);
-  // const [packageCity, setPackageCity] = useState('');
-  // const [packageCountry, setPackageCountry] = useState('');
 
   useEffect(() => {
     mapboxgl.accessToken =
@@ -46,6 +44,8 @@ const MapboxGLMap = ({ center }) => {
         map.resize();
       });
     };
+
+    // Status: {status ? status : "loading..."}{" "}
 
     if (!map) initializeMap({ setMap, mapContainer });
   }, [map, center]);

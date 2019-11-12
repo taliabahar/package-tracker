@@ -3,6 +3,7 @@ import "./App.css";
 import { Package } from "./Package";
 import { apiHost } from "./shippoAPI";
 import box from "./images/boxGreen.png";
+import foooterGraphic from "./images/footer.png";
 
 function App() {
   useEffect(() => apiHost("https://api.goshippo.com/tracks/"));
@@ -82,7 +83,15 @@ function App() {
             deletePackage={deletePackage}
           />
         ))}
+        <div className="push"></div>
       </div>
+      <footer className="footer">
+        <img
+          id="footerGraphic"
+          src={foooterGraphic}
+          alt="Truck and hills"
+        ></img>
+      </footer>
     </div>
   );
 }

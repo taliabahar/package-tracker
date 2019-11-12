@@ -1,7 +1,9 @@
 body {
   height: 100vh;
+  width: 100vw;
   background: #b2e7f3;
   height: 100vh;
+  margin: 0;
 }
 
 .app {
@@ -19,11 +21,14 @@ body {
 
 .todo-list {
   margin: 0 auto;
-  background: #b2e7f3;
+  /* background: #b2e7f3; */
   /* background: yellow; */
   border-radius: 4px;
   padding: 5px;
   max-width: 850px;
+  min-height: 100%;
+  margin-bottom: -320px;
+  opacity: 1;
 }
 
 .packageInput {
@@ -121,4 +126,22 @@ button[disabled]:hover {
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;
+}
+
+#footerGraphic {
+  overflow: scroll;
+  position: fixed;
+  z-index: -1;
+  width: 100vw;
+  height: 320px;
+  bottom: 0;
+  left: 0;
+}
+
+.footer .push {
+  height: 50px;
+}
+
+.footer {
+  line-height: 50px;
 }
