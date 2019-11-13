@@ -5,11 +5,11 @@ import r3 from "./images/x-button.png";
 import Modal from "./Modal";
 import useModal from "./useModal";
 import { trackPackage } from "./shippoAPI";
-import { getTrackingStatus } from "./real-ShippoAPI";
+import { getTrackingStatus, postPackageWebhooks } from "./real-ShippoAPI";
 import { getPackageCoordinates } from "./real-MapboxAPI";
 
 export function Package(props) {
-  const { carrier, trackingNum } = { props };
+  const { carrier, trackingNum } = props.pkg;
   const { isShowing, toggle } = useModal();
 
   const [status, setStatus] = useState("");
@@ -25,9 +25,11 @@ export function Package(props) {
     props.pkg.trackingName && props.pkg.trackingNum && props.pkg.carrier;
 
   async function grabData() {
-    // const info = await trackPackage(); //post
-    // const data = await getTrackingStatus(carrier, trackingNum); //Dondi's get
-    const data = await trackPackage(carrier, trackingNum);
+    await postPackageWebhooks(carrier, trackingNum); //post
+    console.log("carrier", carrier);
+    console.log("tracking num", trackingNum);
+    const data = await getTrackingStatus(carrier, trackingNum); // real API
+    // const data = await trackPackage(carrier, trackingNum);
     const currentTrackingHistoryItem =
       data.data[0].tracking_history[data.data[0].tracking_history.length - 1];
     setStatus(currentTrackingHistoryItem.status);
